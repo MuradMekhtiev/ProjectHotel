@@ -24,14 +24,14 @@ builder.Services.AddScoped<IRoomService, RoomManager>();
 builder.Services.AddScoped<ISubscribeDal, EfSubscribeDal>();
 builder.Services.AddScoped<ISubscribeService, SubscribeManager>();
 
-//builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddAutoMapper(typeof(Program));
 //builder.Services.AddScoped
 
 builder.Services.AddCors(opt =>
 {
     opt.AddPolicy("HotelApiCors", opts =>
     {
-        opts.AllowAnyOrigin().AllowAnyHeader().AllowAnyHeader();
+        opts.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
     });
 });
 
