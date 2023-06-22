@@ -16,6 +16,17 @@ namespace HotelProject.DataAccessLayer.Concrete
             optionsBuilder.UseSqlServer("server=HOME-PC\\SQLEXPRESS; initial catalog=HotelProject; integrated security=true; Trusted_Connection=True; TrustServerCertificate=True");
         }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Guest>().ToTable(tb => tb.HasTrigger("GuestDecrease"));
+            builder.Entity<Guest>().ToTable(tb => tb.HasTrigger("GuestIncrease"));
+            builder.Entity<Room>().ToTable(tb => tb.HasTrigger("RoomDecrease"));
+            builder.Entity<Room>().ToTable(tb => tb.HasTrigger("RoomIncrease"));
+            builder.Entity<Staff>().ToTable(tb => tb.HasTrigger("StaffDecrease"));
+            builder.Entity<Staff>().ToTable(tb => tb.HasTrigger("StaffIncrease"));
+            base.OnModelCreating(builder);
+        }
+
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Staff> Staffs { get; set; }
@@ -24,5 +35,6 @@ namespace HotelProject.DataAccessLayer.Concrete
         public DbSet<About> Abouts { get; set; }
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Guest> Guests { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
     }
 }
