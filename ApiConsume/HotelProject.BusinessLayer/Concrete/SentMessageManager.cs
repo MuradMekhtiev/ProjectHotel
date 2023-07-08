@@ -33,6 +33,11 @@ namespace HotelProject.BusinessLayer.Concrete
             return _sentMessageDal.GetList();
         }
 
+        public int TGetSentMessageCount()
+        {
+            return _sentMessageDal.GetSentMessageCount();
+        }
+
         public void TInsert(SentMessage t)
         {
             _sentMessageDal.Insert(t);

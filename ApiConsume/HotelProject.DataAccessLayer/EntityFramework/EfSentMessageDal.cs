@@ -16,5 +16,11 @@ namespace HotelProject.DataAccessLayer.EntityFramework
         {
 
         }
+
+        public int GetSentMessageCount()
+        {
+            var context = new Context();
+            return context.SentMessages.Count();
+        }
     }
 }
